@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[=====Browser Session Started=====]]>
+    </line>
+    <line>
+      <![CDATA[=====Browser Session End=========]]>
+    </line>
+  </reporter-output>
+  <suite name="ColliervilleExpo_Automation" duration-ms="34485" started-at="2016-10-26T07:06:33Z" finished-at="2016-10-26T07:07:07Z">
+    <groups>
+    </groups>
+    <test name="ColliervilleExpo_Automation" duration-ms="34485" started-at="2016-10-26T07:06:33Z" finished-at="2016-10-26T07:07:07Z">
+      <class name="com.cv.testscripts.TestSuite">
+        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:com.cv.testscripts.TestSuite@3c9754d8]" name="setUp" is-config="true" duration-ms="11332" started-at="2016-10-26T12:36:33Z" finished-at="2016-10-26T12:36:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[=====Browser Session Started=====]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="Login(com.cv.datainitialization.DataInt)[pri:1, instance:com.cv.testscripts.TestSuite@3c9754d8]" name="Login" duration-ms="14126" started-at="2016-10-26T12:36:44Z" description="Login" data-provider="getLogin" finished-at="2016-10-26T12:36:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[com.cv.datainitialization.DataInt@3da05287]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Login -->
+        <test-method status="PASS" signature="close()[pri:0, instance:com.cv.testscripts.TestSuite@3c9754d8]" name="close" is-config="true" duration-ms="8971" started-at="2016-10-26T12:36:58Z" finished-at="2016-10-26T12:37:07Z">
+          <reporter-output>
+            <line>
+              <![CDATA[=====Browser Session End=========]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- close -->
+      </class> <!-- com.cv.testscripts.TestSuite -->
+    </test> <!-- ColliervilleExpo_Automation -->
+  </suite> <!-- ColliervilleExpo_Automation -->
+</testng-results>

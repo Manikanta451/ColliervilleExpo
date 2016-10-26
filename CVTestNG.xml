@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ColliervilleExpo_Automation" verbose="3" parallel="false">
+
+
+	<test name="ColliervilleExpo_Automation" preserve-order="true">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.cv.testscripts.TestSuite">
+				<methods>
+				    
+			
+			            
+				</methods>
+
+			</class>
+		</classes>
+	</test>
+	<listeners>
+       <listener class-name="com.cv.listeners.TestListener"/>
+       <listener class-name="com.cv.listeners.ExtentReporterNG"/>
+  </listeners>
+  </suite>
