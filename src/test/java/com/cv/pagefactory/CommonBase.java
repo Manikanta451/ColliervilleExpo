@@ -1,6 +1,9 @@
 package com.cv.pagefactory;
 
+import java.awt.AWTException;
 import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.text.DateFormat;
@@ -77,7 +80,6 @@ public class CommonBase {
 	public String str;
 	public String snum;
 	public String excep;
-	public String order;
 	public String today;
 	public String randomemail;
 	public static Properties CONFIG = null;
@@ -200,9 +202,9 @@ public class CommonBase {
 			driver = new EdgeDriver();
 			driver.get(url);
 			          	
-		}/*else {
+		}else {
 			throw new IllegalArgumentException("The Browser Type is Undefined");
-		}*/
+		}
      	driver.manage().window().maximize();
 		return driver;
 	}
@@ -230,13 +232,7 @@ public class CommonBase {
 		profile.setPreference("browser.download.manager.closeWhenDone", false);
 		profile.setAcceptUntrustedCertificates(true);
 		profile.setAssumeUntrustedCertificateIssuer(false);
-		
-		/*profile.setPreference("javascript.enabled", true);
-		profile.setPreference("dom.max_chrome_script_run_time", 0);
-		profile.setPreference("dom.max_script_run_time", 0);
-		profile.setPreference("browser.startup.homepage_override.mstone", "ignore");
-		profile.setPreference("startup.homepage_welcome_url.additional",  "about:blank");
-		profile.setPreference("startup.homepage_welcome_url", "about:blank");*/
+
 		return profile;
 
 	}
@@ -482,7 +478,7 @@ public class CommonBase {
 	public boolean getscreenshot() {
 		try {
 			File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-			File browseFile = new File((screenshot + File.separator + getnum() + ".png"));
+			File browseFile = new File((screenshot + File.separator + gettimestamp() + ".png"));
 			FileUtils.moveFile(scrFile, browseFile);
 			return true;
 		} catch (Exception e) {
@@ -492,26 +488,6 @@ public class CommonBase {
 
 	}
 
-	
-	public String getnum() {
-		order = driver.findElement(By.id("orderNumber")).getText();
-		return order;
-	}
-	
-		
-	public boolean getFailedScreenshot() {
-			try {
-				File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-				File browseFile = new File((screenshot + File.separator + gettimestamp() + ".png"));
-				FileUtils.moveFile(scrFile, browseFile);
-				return true;
-			} catch (Exception e) {
-				
-			}
-			return false;
-
-		}
-		
 		
 	public String getfuturedate() {
 			   Date tomorrow = new Date(System.currentTimeMillis()+ (1000 * 60 * 60 * 24 * 7));
@@ -524,7 +500,8 @@ public class CommonBase {
 			}
 	
 	public void emailreport(){		 
-		 sendPDFReportByGMail("ebiztesting57@gmail.com", "1111111!", "mani6747@gmail.com", "Elop Parent Automation Report", "");
+		 sendPDFReportByGMail("ebiztesting57@gmail.com", "1111111!", "mani6747@gmail.com", "ColliervilleExpo Automation Report", "");
+ 
 	 }	 
 	  
 	 private static void sendPDFReportByGMail(String from, String pass, String to, String subject, String body) {
@@ -569,7 +546,7 @@ public class CommonBase {
 			 Multipart multipart = new MimeMultipart();
 			 multipart.addBodyPart(objMessageBodyPart);
 			 objMessageBodyPart = new MimeBodyPart();
-			 String filename = "D:/ElopParentProject/test-output/Extent.html";        
+			 String filename = "E://Seleniumeclipsewoekspace//ColliervilleExpo//test-output//Extent.html";        
 			 File file = new File(filename);
 			 //Create data source to attach the file in mail
 			 DataSource source = new FileDataSource(file);
@@ -698,7 +675,46 @@ public class CommonBase {
 			}
 			
 			
+			//------------------- File upload with Robot Keys-------------------------//
 			
+			public static void fileupload(String string) {
+				
+			    	StringSelection stringSelection = new StringSelection(string);////StringSelection is a class that can be used for copy and paste operations.
+			    	Toolkit.getDefaultToolkit().getSystemClipboard() .setContents(stringSelection, null);//When you do a cut or copy of text in the operating system, the text is  stored in the clipboard 
+			    	
+			            
+			    		try {
+			    			Robot robot = new Robot();
+			    			robot.delay(1000);
+			    			robot.keyPress(KeyEvent.VK_CONTROL);//This is for pressing  ctrl button  of Keyboard
+			    			robot.keyPress(KeyEvent.VK_V); //This is for pressing  v button of keyboard
+			    			robot.keyRelease(KeyEvent.VK_V); //This is for releasing the ctrl button of KeyBoard
+			    			robot.keyRelease(KeyEvent.VK_CONTROL); //This is for releasing V button of keyBoard
+			    			robot.delay(2000);
+			    			robot.keyPress(KeyEvent.VK_TAB);
+			    			robot.keyRelease(KeyEvent.VK_TAB);
+			    			robot.keyPress(KeyEvent.VK_ENTER); 
+			    			robot.keyRelease(KeyEvent.VK_ENTER); 
+				 
+			    			} catch (AWTException e) {
+			    				e.printStackTrace();
+			    			}
+						}
+			
+			//-------------- Element HighLighter Code-----------------//
+			
+			public static void HighLightElement(WebElement element){
+				
+					JavascriptExecutor js=(JavascriptExecutor)driver; 
+					js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid orange;');", element);
+				 
+						try {
+							Thread.sleep(1000);
+							} 
+							catch (InterruptedException e) {
+							}
+							js.executeScript("arguments[0].setAttribute('style','border: solid 2px white')", element); 
+							}	
 			
 	
 	}
