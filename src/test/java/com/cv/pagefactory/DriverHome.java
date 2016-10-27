@@ -31,8 +31,17 @@ public class DriverHome extends CommonBase {
 		return PageFactory.initElements(driver, Login.class);
 	}
 	
+	public AddExhibit getexhibit(){
+		return PageFactory.initElements(driver, AddExhibit.class);
+	}
 	
 	
+	public AddSensor getsensor(){
+		return PageFactory.initElements(driver, AddSensor.class);
+	}
 	
+	public AddCampaign getcampaign(){
+		return PageFactory.initElements(driver, AddCampaign.class);
+	}
 }
 

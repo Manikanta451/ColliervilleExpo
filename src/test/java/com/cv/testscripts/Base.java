@@ -8,6 +8,9 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
 import com.cv.utilities.Xls_Reader;
+import com.cv.pagefactory.AddCampaign;
+import com.cv.pagefactory.AddExhibit;
+import com.cv.pagefactory.AddSensor;
 import com.cv.pagefactory.DriverHome;
 import com.cv.pagefactory.Login;
 
@@ -25,6 +28,9 @@ public class Base {
 	public DriverHome driverhome;
 	
 	public Login login;
+	public AddExhibit exhibit;
+	public AddSensor sensor;
+	public AddCampaign campaign;
 	
 	public static String passMessage = null;
 	public static String finalMessage = null;
@@ -56,4 +62,7 @@ public class Base {
 
 		}
 	}
+	
+	
+
 }

@@ -8,8 +8,8 @@
 		<classes>
 			<class name="com.cv.testscripts.TestSuite">
 				<methods>
-				    
-			
+				    <include name="Login"></include>
+				    <include name="AddExhibit"></include>
 			            
 				</methods>
 

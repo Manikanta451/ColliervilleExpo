@@ -1,11 +1,14 @@
 package com.cv.pagefactory;
 
 import java.awt.AWTException;
+import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
+import javax.imageio.ImageIO;
 import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -39,6 +43,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -49,6 +54,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -75,6 +81,7 @@ public class CommonBase {
 	
 	public String timeStamp;
 	public String browserName;
+	public String imagepath  = System.getProperty("user.dir");
 	public String sikulipath = System.getProperty("user.dir");
 	public String screenshot = System.getProperty("user.dir") + "_Screenshot";
 	public String str;
@@ -685,7 +692,7 @@ public class CommonBase {
 			            
 			    		try {
 			    			Robot robot = new Robot();
-			    			robot.delay(1000);
+			    			robot.delay(4000);
 			    			robot.keyPress(KeyEvent.VK_CONTROL);//This is for pressing  ctrl button  of Keyboard
 			    			robot.keyPress(KeyEvent.VK_V); //This is for pressing  v button of keyboard
 			    			robot.keyRelease(KeyEvent.VK_V); //This is for releasing the ctrl button of KeyBoard
@@ -715,6 +722,88 @@ public class CommonBase {
 							}
 							js.executeScript("arguments[0].setAttribute('style','border: solid 2px white')", element); 
 							}	
+		
+			
+		//--------Element slider code--//
+			
+			
+			
+			public void slider(WebElement elementTodrag, int xOffset, int yOffset) {
+				try {
+					if (elementTodrag.isDisplayed()) {
+						Actions move = new Actions(driver);
+						Action action = (Action) move.dragAndDropBy(elementTodrag, xOffset, yOffset).build();
+						Thread.sleep(2000);
+						action.perform();
+					} else {
+						System.out.println("Element was not displayed to drag");
+					}
+				} catch (StaleElementReferenceException e) {
+					System.out.println("Element with " + elementTodrag + "is not attached to the page document "	+ e.getStackTrace());
+				} catch (NoSuchElementException e) {
+					System.out.println("Element " + elementTodrag + " was not found in DOM " + e.getStackTrace());
+				} catch (Exception e) {
+					System.out.println("Unable to resize" + elementTodrag + " - "	+ e.getStackTrace());
+				}
+			}
+
+			
+			//--------------------- Future Date Select----------------//
+			
+			public static void futuredateselection(){
+				
+				try {
+					DateFormat dateformat = new SimpleDateFormat("d"); //date format
+		            Date date = new Date();					
+		            String today = dateformat.format(date); 
+		            int dateselectfuture=Integer.parseInt(today);
+		            int future=dateselectfuture + 2;
+		            String futuredate=String.valueOf(future);
+		            WebElement dateWidget = driver.findElement(By.id("ui-datepicker-div")); //find the calendar
+		            List<WebElement> columns=dateWidget.findElements(By.tagName("td"));  
+		            //comparing the text of cell with today's date and clicking it.
+		            for (WebElement cell : columns)
+		            {
+		            	
+		               if (cell.getText().equals(futuredate)){
+		              
+		                  cell.click();
+		                 
+		                  break;
+		                
+		               } 
+		            }
+		            
+				} catch (Exception e) {
+				}
+			}
+
+			
+	//-- program to takescreenshot for  particular webelement--//
+			
+			
+			public File captureElementSpecificScreenShot(WebElement element) throws IOException{
+				
+				try{
+				 File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+				 File browseFile = new File((screenshot + File.separator + gettimestamp() + ".png"));
+				 FileUtils.moveFile(screen, browseFile);
+				 BufferedImage img = ImageIO.read(screen);
+				 int width = element.getSize().getWidth();
+				 int height = element.getSize().getHeight();
+				 Rectangle rect = new Rectangle(width, height);
+				 Point p = element.getLocation();
+				 BufferedImage dest = img.getSubimage(p.getX(), p.getY(), rect.width,rect.height);
+				 ImageIO.write(dest, "png", screen);
+				 return screen;
+				 }catch (Exception e) {	
+					}
+				return null;
+					
+				   }
+
+			
+			
 			
 	
 	}

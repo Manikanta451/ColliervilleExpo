@@ -21,22 +21,55 @@ public class TestSuite extends Base {
 	
 	
 
-	@Test(description = "Login", dataProvider = "getLogin", priority = 1)
+	@Test(description = "Login", dataProvider = "getLogin", priority = 0)
 	public void Login(DataInt dataInt) throws Exception {
 			login= driverhome.getLogin();
 			login.accountlogin(dataInt);			
 	}
 	
 	
- 
+	@Test(description = "AddExhibit", dataProvider = "getExhibit", priority = 1)
+	public void AddExhibit(DataInt dataInt) throws Exception {
+			exhibit= driverhome.getexhibit();
+			exhibit.exhibitadding(dataInt);
+	}
+	
+	@Test(description = "AddSensor", dataProvider = "getSensor", priority = 2)
+	public void AddSensor(DataInt dataInt) throws Exception {
+			sensor=driverhome.getsensor();
+			sensor.addsensor(dataInt);
+	}
 	
 	
-	@DataProvider
+	@Test(description = "AddCampaign", dataProvider = "getCampaign", priority = 3)
+	public void AddCampaign(DataInt dataInt) throws Exception {
+			campaign=driverhome.getcampaign();
+			campaign.addcampiagn(dataInt);
+		
+	}
+		@DataProvider
 		public Iterator<Object[]> getLogin() {
 			return Util.getLoginData("Login", xls).iterator();
 
 		}
-			
+		
+		@DataProvider
+		public Iterator<Object[]> getExhibit() {
+			return Util.getexhibitdata("Exhibit", xls).iterator();
+
+		}	
+		
+		@DataProvider
+		public Iterator<Object[]> getSensor() {
+			return Util.getsensordata("Sensor", xls).iterator();
+
+		}	
+		
+		@DataProvider
+		public Iterator<Object[]> getCampaign() {
+			return Util.getcampaigndata("Campaign", xls).iterator();
+
+		}	
 			
 }
 
