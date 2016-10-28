@@ -19,7 +19,6 @@ public class AddExhibit extends AllPageObjects {
 			captureElementSpecificScreenShot(addexihibit);
 			waitForSeconds(2);
 			addexihibit.click();
-			
 			waitForSeconds(4);
 			name.sendKeys(dataInt.getName());
 			waitForSeconds(1);
@@ -42,7 +41,7 @@ public class AddExhibit extends AllPageObjects {
 			
 			
 		} catch (Exception e) {
-			
+			System.out.println(e);
 		}
 	}
 	

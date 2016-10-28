@@ -20,43 +20,33 @@ public class AddCampaign extends AllPageObjects {
 			addcampaign.click();
 			waitForSeconds(5);
 			campaignname.sendKeys(dataInt.getCampaignName());
-			/*waitForSeconds(1);
+			waitForSeconds(1);
 			desc.sendKeys(dataInt.getDescription());
 			schedulestarttime.click();
-			waitForSeconds(2);
-			slider(hour, 60, 0);
-			waitForSeconds(2);
-			slider(minute, 40, 0);
-			waitForSeconds(2);
-			done.click();
+			startandendtime();
 			waitForSeconds(2);
 			scheduleendtime.click();
+			startandendtime();
 			waitForSeconds(2);
-			slider(hour, 30, 0);
-			waitForSeconds(2);
-			slider(minute, 20, 0);
-			waitForSeconds(2);
-			done.click();
-			waitForSeconds(3);
 			schedulestartdate.click();
 			waitForSeconds(1);
 			systemdateselect();
 			waitForSeconds(1);
 			scheduleenddate.click();
 			waitForSeconds(1);
-			futuredateselection();*/
-			waitForSeconds(3);
-			Campaigncontent(imgcheck);
+			futuredateselection();
+			waitForSeconds(2);
+			campaignContent(imgcheck);
 			
 			
 		} catch (Exception e) {
-			
+			System.out.println(e.getStackTrace());
 		}
 	
 	}
 	
 	
-	public void Campaigncontent(WebElement element)throws Exception {
+	public void campaignContent(WebElement element)throws Exception {
 		try {
 			if (element.equals(notification)) {
 				notification.click();
@@ -67,7 +57,7 @@ public class AddCampaign extends AllPageObjects {
 				waitForSeconds(1);
 				imgupload.click();
 				waitForSeconds(2);
-				super.fileupload(imagepath + "\\images\\Campaign.jpg");	
+				fileupload(imagepath + "\\images\\Campaign.jpg");	
 			}else if (element.equals(videocheck)) {
 				videocheck.click();
 				waitForSeconds(1);
@@ -78,9 +68,19 @@ public class AddCampaign extends AllPageObjects {
 			
 		}
 		
-			
-		
-		
+	}
+	
+	public void startandendtime() throws Exception{
+		try {
+			waitForSeconds(2);
+			slider(hour, 60, 0);
+			waitForSeconds(2);
+			slider(minute, 40, 0);
+			waitForSeconds(2);
+			done.click();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 	
 	
