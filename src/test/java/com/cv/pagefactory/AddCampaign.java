@@ -23,10 +23,10 @@ public class AddCampaign extends AllPageObjects {
 			waitForSeconds(1);
 			desc.sendKeys(dataInt.getDescription());
 			schedulestarttime.click();
-			startandendtime();
+			this.startandendtime();
 			waitForSeconds(2);
 			scheduleendtime.click();
-			startandendtime();
+			this.startandendtime();
 			waitForSeconds(2);
 			schedulestartdate.click();
 			waitForSeconds(1);
@@ -36,7 +36,7 @@ public class AddCampaign extends AllPageObjects {
 			waitForSeconds(1);
 			futuredateselection();
 			waitForSeconds(2);
-			campaignContent(imgcheck);
+			this.campaignContent(imgcheck);
 			
 			
 		} catch (Exception e) {
@@ -63,12 +63,15 @@ public class AddCampaign extends AllPageObjects {
 				waitForSeconds(1);
 				url.sendKeys("www.google.com");	
 			}
-		} catch (Exception e1) {
-			System.out.println(e1);
+		} catch (Exception e) {
+			System.out.println(e);
 			
 		}
 		
 	}
+	
+	
+	
 	
 	public void startandendtime() throws Exception{
 		try {

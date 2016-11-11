@@ -12,7 +12,7 @@ public class AddExhibit extends AllPageObjects {
 	}
 
 
-	public void exhibitadding (DataInt dataInt) throws Exception{
+	public void exhibitadding(DataInt dataInt) throws Exception{
 		
 		try {
 			waitForSeconds(7);
