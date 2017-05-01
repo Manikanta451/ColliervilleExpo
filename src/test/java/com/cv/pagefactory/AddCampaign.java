@@ -40,7 +40,8 @@ public class AddCampaign extends AllPageObjects {
 			
 			
 		} catch (Exception e) {
-			System.out.println(e.getStackTrace());
+			
+			e.printStackTrace();
 		}
 	
 	}
@@ -64,14 +65,11 @@ public class AddCampaign extends AllPageObjects {
 				url.sendKeys("www.google.com");	
 			}
 		} catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 			
 		}
 		
 	}
-	
-	
-	
 	
 	public void startandendtime() throws Exception{
 		try {
@@ -82,7 +80,7 @@ public class AddCampaign extends AllPageObjects {
 			waitForSeconds(2);
 			done.click();
 		} catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 	

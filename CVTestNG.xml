@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="ColliervilleExpo_Automation" verbose="3" parallel="false">
+<suite name="ColliervilleExpo_Automation"  verbose="3" parallel="false">
 
 
 	<test name="ColliervilleExpo_Automation" preserve-order="true">
@@ -9,7 +9,7 @@
 			<class name="com.cv.testscripts.TestSuite">
 				<methods>
 				    <include name="Login"></include>
-				    <include name="AddExhibit"></include>
+				    
 			            
 				</methods>
 

@@ -2,7 +2,6 @@ package com.cv.pagefactory;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
 import com.cv.utilities.PropertiesFileReader;
 
 
@@ -43,5 +42,6 @@ public class DriverHome extends CommonBase {
 	public AddCampaign getcampaign(){
 		return PageFactory.initElements(driver, AddCampaign.class);
 	}
+	
 }
 

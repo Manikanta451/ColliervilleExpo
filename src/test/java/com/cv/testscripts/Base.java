@@ -54,7 +54,7 @@ public class Base {
 	public void close() throws Exception {
 		try {
 			Thread.sleep(5000);
-		   // driverhome.emailreport();
+		    driverhome.emailreport();
 			//driverhome.quitDriver();
 			Reporter.log("=====Browser Session End=========", true);
 		} catch (WebDriverException e) {

@@ -13,7 +13,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -50,6 +52,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -174,6 +177,18 @@ public class CommonBase {
 			driver.get(url);
 
 		} else if (browser.equalsIgnoreCase("chrome")||browser.equalsIgnoreCase("google chrome")) {
+			Map<String, Object> prefs = new HashMap<String, Object>();
+            
+            // Set the notification setting it will override the default setting
+			prefs.put("profile.default_content_setting_values.notifications", 2);
+			 // Create object of ChromeOption class
+			ChromeOptions options = new ChromeOptions();
+	 
+	                // Set the experimental option
+			options.setExperimentalOption("prefs", prefs);
+			// add parameter which will disable the extension
+			options.addArguments("--disable-extensions");
+
 			DesiredCapabilities handlSSLErr = DesiredCapabilities.chrome () ;      
 			handlSSLErr.setCapability (CapabilityType.ACCEPT_SSL_CERTS, true);
 			System.setProperty(
@@ -183,7 +198,7 @@ public class CommonBase {
 							+ "BrowserDrivers"
 							+ System.getProperty("file.separator")
 							+ "chromedriver.exe");
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(options);
 			driver.get(url);
 
 		}else if (browser.equalsIgnoreCase("safari")||browser.equalsIgnoreCase("apple safari")) {
@@ -239,6 +254,7 @@ public class CommonBase {
 		profile.setPreference("browser.download.manager.closeWhenDone", false);
 		profile.setAcceptUntrustedCertificates(true);
 		profile.setAssumeUntrustedCertificateIssuer(false);
+		
 
 		return profile;
 
@@ -447,10 +463,10 @@ public class CommonBase {
 	}
 
 	
-	public Boolean waitforElementTotype(WebElement con, String text) {
+	public Boolean waitforElementTotype(WebElement element, String text) {
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		Boolean tr = wait.until(ExpectedConditions.textToBePresentInElement(
-				con, text));
+				element, text));
 		return tr;
 	}
 
@@ -499,7 +515,7 @@ public class CommonBase {
 	public String getfuturedate() {
 			   Date tomorrow = new Date(System.currentTimeMillis()+ (1000 * 60 * 60 * 24 * 7));
 			   System.out.println(tomorrow);
-			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+			   SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 			   String s = formatter.format(tomorrow);
 			   System.out.println(s);
 			return s;
@@ -757,7 +773,7 @@ public class CommonBase {
 		            Date date = new Date();					
 		            String today = dateformat.format(date); 
 		            int dateselectfuture=Integer.parseInt(today);
-		            int future=dateselectfuture + 2;
+		            int future=dateselectfuture + 1;
 		            String futuredate=String.valueOf(future);
 		            WebElement dateWidget = driver.findElement(By.id("ui-datepicker-div")); //find the calendar
 		            List<WebElement> columns=dateWidget.findElements(By.tagName("td"));  

@@ -41,9 +41,9 @@ public class AddSensor extends AllPageObjects{
 				
 				
 				
-			} catch (Exception e) {
-			
-			}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
 	}
 }

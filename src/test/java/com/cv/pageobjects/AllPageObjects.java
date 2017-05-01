@@ -2,6 +2,7 @@ package com.cv.pageobjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -17,12 +18,15 @@ public class AllPageObjects extends CommonBase{
 //-- Login Objects--//	
 	
 	@FindBy(how = How.ID, using = "email_login")
+	@CacheLookup
 	public static WebElement email;
 
 	@FindBy(how = How.ID, using = "password")
+	@CacheLookup
 	public static WebElement password;
 	
 	@FindBy(how = How.XPATH, using = "/html/body/div[3]/form[1]/div[5]/button")
+	@CacheLookup
 	public static WebElement signin;
 	
 
@@ -117,7 +121,6 @@ public class AllPageObjects extends CommonBase{
 	@FindBy(how = How.ID, using = "schedule_startdate")
 	public static WebElement schedulestartdate;
 	
-	
 	@FindBy(how = How.ID, using = "schedule_enddate")
 	public static WebElement scheduleenddate;
 	
@@ -159,26 +162,5 @@ public class AllPageObjects extends CommonBase{
 	
 	@FindBy(how = How.ID, using = "add_campaign")
 	public static WebElement campaignadd;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

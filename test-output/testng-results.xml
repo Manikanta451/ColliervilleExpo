@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
     <line>
       <![CDATA[=====Browser Session Started=====]]>
@@ -8,12 +8,12 @@
       <![CDATA[=====Browser Session End=========]]>
     </line>
   </reporter-output>
-  <suite name="ColliervilleExpo_Automation" duration-ms="69905" started-at="2016-10-27T07:04:49Z" finished-at="2016-10-27T07:05:59Z">
+  <suite name="ColliervilleExpo_Automation" duration-ms="28446" started-at="2016-12-28T11:14:59Z" finished-at="2016-12-28T11:15:27Z">
     <groups>
     </groups>
-    <test name="ColliervilleExpo_Automation" duration-ms="69905" started-at="2016-10-27T07:04:49Z" finished-at="2016-10-27T07:05:59Z">
+    <test name="ColliervilleExpo_Automation" duration-ms="28446" started-at="2016-12-28T11:14:59Z" finished-at="2016-12-28T11:15:27Z">
       <class name="com.cv.testscripts.TestSuite">
-        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:com.cv.testscripts.TestSuite@1ce24091]" name="setUp" is-config="true" duration-ms="9526" started-at="2016-10-27T12:34:49Z" finished-at="2016-10-27T12:34:59Z">
+        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:com.cv.testscripts.TestSuite@7a8c8dcf]" name="setUp" is-config="true" duration-ms="10910" started-at="2016-12-28T16:44:59Z" finished-at="2016-12-28T16:45:10Z">
           <params>
             <param index="0">
               <value>
@@ -27,29 +27,18 @@
             </line>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="Login(com.cv.datainitialization.DataInt)[pri:0, instance:com.cv.testscripts.TestSuite@1ce24091]" name="Login" duration-ms="18336" started-at="2016-10-27T12:34:59Z" description="Login" data-provider="getLogin" finished-at="2016-10-27T12:35:17Z">
+        <test-method status="PASS" signature="Login(com.cv.datainitialization.DataInt)[pri:0, instance:com.cv.testscripts.TestSuite@7a8c8dcf]" name="Login" duration-ms="8424" started-at="2016-12-28T16:45:10Z" description="Login" data-provider="getLogin" finished-at="2016-12-28T16:45:18Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[com.cv.datainitialization.DataInt@142269f2]]>
+                <![CDATA[com.cv.datainitialization.DataInt@f316aeb]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Login -->
-        <test-method status="PASS" signature="AddExhibit(com.cv.datainitialization.DataInt)[pri:1, instance:com.cv.testscripts.TestSuite@1ce24091]" name="AddExhibit" duration-ms="36971" started-at="2016-10-27T12:35:17Z" description="AddExhibit" data-provider="getExhibit" finished-at="2016-10-27T12:35:54Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[com.cv.datainitialization.DataInt@663411de]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AddExhibit -->
-        <test-method status="PASS" signature="close()[pri:0, instance:com.cv.testscripts.TestSuite@1ce24091]" name="close" is-config="true" duration-ms="5001" started-at="2016-10-27T12:35:54Z" finished-at="2016-10-27T12:35:59Z">
+        <test-method status="PASS" signature="close()[pri:0, instance:com.cv.testscripts.TestSuite@7a8c8dcf]" name="close" is-config="true" duration-ms="9071" started-at="2016-12-28T16:45:18Z" finished-at="2016-12-28T16:45:27Z">
           <reporter-output>
             <line>
               <![CDATA[=====Browser Session End=========]]>
